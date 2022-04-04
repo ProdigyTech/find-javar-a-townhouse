@@ -12,15 +12,15 @@ const generateTownhouseEmailTemplate = ({
   lowestPricePerMoveInDate,
   floorPlan,
 }) => {
-  return `There is a ${squareFeet} sqft ${bedroom} Bedroom, ${bathroom} Bathroom Townhouse Located @ ${address.addressLine1} with the following best terms: 
+  return `\n There is a ${squareFeet} sqft ${bedroom} Bedroom, ${bathroom} Bathroom Townhouse Located @ ${address.addressLine1} with the following best terms: 
                 Date Available: ${lowestPricePerMoveInDate.date} 
-                Lease Term:  ${lowestPricePerMoveInDate.termLength} 
-                Rent: ${lowestPricePerMoveInDate.price} 
-                net effective price (promotions) :  ${lowestPricePerMoveInDate.netEffectivePrice} 
+                Lease Term:  ${lowestPricePerMoveInDate.termLength} Months
+                Rent: $${lowestPricePerMoveInDate.price} 
+                net effective price (promotions) : $${lowestPricePerMoveInDate.netEffectivePrice} 
             
-                Link to floorplan image: https://resource.avalonbay.com/${floorPlan.highResolution}
+                Link to floorplan image: https://resource.avalonbay.com${floorPlan.highResolution}
 
-                -----------------------------------------------------------------------------------------------`;
+                ----------------------------------------------------------------------------------------------`;
 };
 
 const launchBrowser = async () => {
@@ -61,10 +61,10 @@ const sendNotification = (filteredEntries) => {
     to: process.env.EMAIL,
     subject: `ALERT ---- (${filteredEntries.length}) New Townhouses Available!`,
     attachments: attachments,
-    text: `Here are the listing below,
+    text: `Here are the listing below: 
     ${filteredEntries.map((args, i) => {
       return generateTownhouseEmailTemplate(args, i);
-    })}`,
+    })}`
   };
 
   transporter.sendMail(mailOptions, function (error, info) {

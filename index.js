@@ -37,7 +37,6 @@ const launchBrowser = async () => {
   return data;
 };
 
-
 const sendNotification = (filteredEntries) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -64,7 +63,7 @@ const sendNotification = (filteredEntries) => {
     text: `Here are the listing below: 
     ${filteredEntries.map((args, i) => {
       return generateTownhouseEmailTemplate(args, i);
-    })}`
+    })}`,
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
@@ -77,7 +76,6 @@ const sendNotification = (filteredEntries) => {
 };
 
 const townhouseData = await launchBrowser();
-
 
 const filteredTownhouseData = townhouseData.filter(
   ({
@@ -105,8 +103,5 @@ const filteredTownhouseData = townhouseData.filter(
 );
 
 if (filteredTownhouseData.length) {
-    sendNotification(filteredTownhouseData)
-} 
-
-
-
+  sendNotification(filteredTownhouseData);
+}

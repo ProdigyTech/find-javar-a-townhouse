@@ -1,11 +1,12 @@
-# Townhouse Scraper
+# Housing Scraper
 
-## A competitive rental market web-scraper that pulls townhomes that meet specific criteria from Avalon Communities and emails them to a specified user.
+Housing Scraper is a web scraping tool designed for the competitive rental market. It efficiently pulls townhomes that meet specific criteria from Avalon Communities and sends them via email to a specified user. This eliminates the need for manual and periodic website checks, as the tool automates the process and delivers filtered results to your inbox. The scraper utilizes Puppeteer to navigate to the Avalon Communities website and runs a JavaScript command in the console to extract the desired data. The housing data is stored directly on the window object, ensuring easy access.
 
-### Uses puppeteer to navigate to the specific website, then runs a javascript command in the console to pull the data. 
+## Features
 
-### The data is stored directly on window object so we have access to it. 
-
-### Eliminates the need of checking the website manually and periodically since this automated tool will email filtered results to you. 
-
-### Runs on an hourly cron job 
+- Automates the process of finding rental townhomes.
+- Scrapes townhomes from Avalon Communities based on specified criteria.
+- Utilizes Puppeteer for website navigation and data extraction.
+- Sends filtered results to a specified user via email.
+- Eliminates the need for manual and periodic website checks.
+- Runs on a cron job for regular updates.
